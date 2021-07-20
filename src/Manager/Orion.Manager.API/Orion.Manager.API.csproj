@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\SharedKernel\Orion.AspNet\Orion.AspNet.csproj" />
+      <ProjectReference Include="..\..\SharedKernel\Orion.DomainValidation\Orion.DomainValidation.csproj" />
+      <ProjectReference Include="..\Orion.Manager.Infra\Orion.Manager.Infra.csproj" />
+      <ProjectReference Include="..\Orion.Manager.SharedKernel\Orion.Manager.SharedKernel.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,41 @@
+﻿using Microsoft.Extensions.DependencyInjection;
+using Orion.Core.DI;
+using Orion.DomainValidation.DI;
+using Orion.Manager.Core.Common.Services;
+using Orion.Manager.Infra.Data.Repositories;
+using Orion.Manager.Infra.Data.UnitOfWork;
+using Orion.Manager.Infra.IoC.Setup;
+using Orion.Manager.SharedKernel.Settings;
+using Orion.Repository.DI;
+
+namespace Orion.Manager.Infra.IoC
+{
+    public static class Injector
+    {
+        public static IServiceCollection AddApplicationDependencies(
+            this IServiceCollection services,
+            AppSettings appSettings,
+            bool isTestEnv = false
+        )
+        {
+            services
+                .AddRepositories(typeof(ReadOnlyRepository<>), typeof(Repository<>), typeof(UnitOfWorkScopeFactory))
+                .AddService(typeof(WriteService<>))
+                .AddDomainValidation()
+                .AddHttpClients()
+                .AddMapper()
+                .AddMediator()
+                .AddValidation()
+                .AddSingleton(appSettings);
+
+            if (!isTestEnv)
+            {
+                services
+                    .AddDatabase(appSettings)
+                    .AddProviders();
+            }
+                
+            return services;
+        } 
+    }
+}

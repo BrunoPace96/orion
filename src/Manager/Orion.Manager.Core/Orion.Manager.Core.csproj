@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\SharedKernel\Orion.Core\Orion.Core.csproj" />
+      <ProjectReference Include="..\..\SharedKernel\Orion.DataContracts\Orion.DataContracts.csproj" />
+      <ProjectReference Include="..\..\SharedKernel\Orion.DomainValidation\Orion.DomainValidation.csproj" />
+      <ProjectReference Include="..\..\SharedKernel\Orion.Repository\Orion.Repository.csproj" />
+      <ProjectReference Include="..\Orion.Manager.SharedKernel\Orion.Manager.SharedKernel.csproj" />
+    </ItemGroup>
+
+</Project>
