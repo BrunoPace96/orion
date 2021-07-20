@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orion.OperationResult", "Sh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orion.Core", "SharedKernel\Orion.Core\Orion.Core.csproj", "{24108579-89DC-4CAF-A688-3179C78DD28B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orion.Repository", "SharedKernel\Orion.Repository\Orion.Repository.csproj", "{19CC5ACF-B1A3-48EE-A900-52848D885A01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,10 +32,15 @@ Global
 		{24108579-89DC-4CAF-A688-3179C78DD28B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24108579-89DC-4CAF-A688-3179C78DD28B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24108579-89DC-4CAF-A688-3179C78DD28B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19CC5ACF-B1A3-48EE-A900-52848D885A01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19CC5ACF-B1A3-48EE-A900-52848D885A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19CC5ACF-B1A3-48EE-A900-52848D885A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19CC5ACF-B1A3-48EE-A900-52848D885A01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2D16ECB1-FE94-4C28-A70D-92FCC10A4006} = {E66CE53C-4E54-4FD1-9F83-69831D9A3653}
 		{F9402531-3CC1-4B09-A97F-CFEFD5BDFE3E} = {E66CE53C-4E54-4FD1-9F83-69831D9A3653}
 		{24108579-89DC-4CAF-A688-3179C78DD28B} = {E66CE53C-4E54-4FD1-9F83-69831D9A3653}
+		{19CC5ACF-B1A3-48EE-A900-52848D885A01} = {E66CE53C-4E54-4FD1-9F83-69831D9A3653}
 	EndGlobalSection
 EndGlobal
