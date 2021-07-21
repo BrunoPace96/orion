@@ -12,4 +12,8 @@
       <ProjectReference Include="..\Orion.Manager.SharedKernel\Orion.Manager.SharedKernel.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="10.1.1" />
+    </ItemGroup>
+
 </Project>
