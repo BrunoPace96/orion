@@ -1,5 +1,6 @@
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
+using Orion.Manager.Core.Users.Write.CreateUser;
 
 namespace Orion.Manager.Infra.IoC.Setup
 {
@@ -9,7 +10,7 @@ namespace Orion.Manager.Infra.IoC.Setup
         {
             services.AddFluentValidation(e =>
             {
-                // e.RegisterValidatorsFromAssemblyContaining<CreateUserValidator>();
+                e.RegisterValidatorsFromAssemblyContaining<CreateUserValidator>();
             });
             return services;
         }
