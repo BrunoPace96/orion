@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
-using Orion.Manager.Infra;
 using Orion.Messenger.Providers.Sms;
 
 namespace Orion.Messenger.Services.Services

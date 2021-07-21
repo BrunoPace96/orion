@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "Orion.Manager.Infra";
+option csharp_namespace = "Orion.Messenger.Services";
 import "google/protobuf/empty.proto";
 
 package sms;
