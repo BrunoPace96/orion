@@ -1,5 +1,6 @@
 ﻿using Orion.Core.Domain;
 using Orion.Manager.Core.Common.ValueObjects;
+using Orion.Manager.Core.Users.Write.SendConfirmationCode;
 using Orion.OperationResult.Helpers;
 using Orion.OperationResult.Implementations;
 
@@ -20,6 +21,12 @@ namespace Orion.Manager.Core.Users
             Cpf = cpf;
             Email = email;
             Phone = phone;
+        }
+        
+        public override void Created()
+        {
+            AddDomainEvent(new SendConfirmationCodeNotification(Phone));
+            base.Created();
         }
         
         public static EntityResult<User> Create(Name name, Cpf cpf, Email email, Phone phone)

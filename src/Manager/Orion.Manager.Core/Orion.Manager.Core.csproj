@@ -5,15 +5,15 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="10.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
       <ProjectReference Include="..\..\SharedKernel\Orion.Core\Orion.Core.csproj" />
       <ProjectReference Include="..\..\SharedKernel\Orion.DataContracts\Orion.DataContracts.csproj" />
       <ProjectReference Include="..\..\SharedKernel\Orion.DomainValidation\Orion.DomainValidation.csproj" />
       <ProjectReference Include="..\..\SharedKernel\Orion.Repository\Orion.Repository.csproj" />
       <ProjectReference Include="..\Orion.Manager.SharedKernel\Orion.Manager.SharedKernel.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="AutoMapper" Version="10.1.1" />
     </ItemGroup>
 
 </Project>

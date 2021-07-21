@@ -26,7 +26,8 @@ namespace Orion.Manager.Infra.IoC
                 .AddMapper()
                 .AddMediator()
                 .AddValidation()
-                .AddSingleton(appSettings);
+                .AddSingleton(appSettings)
+                .AddProviders();
 
             if (!isTestEnv)
             {

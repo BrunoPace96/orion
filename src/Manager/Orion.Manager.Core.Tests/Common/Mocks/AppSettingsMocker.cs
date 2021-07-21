@@ -7,6 +7,11 @@ namespace Orion.Manager.Core.Tests.Common.Mocks
     {
         public static AppSettings Mock() =>
             new Faker<AppSettings>()
-                .Rules((_, _) => {});
+                .Rules((_, o) => {
+                    o.Messages = new Messages
+                    {
+                        TwoFactorMessage = "code-replace"
+                    };
+                });
     }
 }

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "Orion.Manager.Infra";
+import "google/protobuf/empty.proto";
+
+package sms;
+
+service SmsGrpcService {
+  rpc SendSms (SmsRequest) returns (google.protobuf.Empty);
+}
+
+message SmsRequest {
+  string phone = 1;
+  string content = 2;
+}
