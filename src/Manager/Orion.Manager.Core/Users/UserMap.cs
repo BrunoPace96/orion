@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Orion.Manager.Core.Users.Read.GetUserByCpf;
 using Orion.Manager.Core.Users.Read.GetUserById;
 using Orion.Manager.Core.Users.Write.CreateUser;
 
@@ -10,6 +11,7 @@ namespace Orion.Manager.Core.Users
         {
             CreateMap<User, CreateUserResult>();
             CreateMap<User, GetUserByIdResult>();
+            CreateMap<User, GetUserByCpfResult>();
         }
     }
 }
