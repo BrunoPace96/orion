@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using Orion.Manager.Core.Users;
 using Orion.Manager.Core.Users.Write;
 
 namespace Orion.Manager.Infra.IoC.Setup

@@ -9,7 +9,7 @@ namespace Orion.Manager.Core.Users
     public class User: EntityBase
     {
         public Name Name { get; }
-        public Cpf Cpf { get; }
+        public Cpf Cpf { get; private set; }
         public Email Email { get; }
         public Phone Phone { get; }
 
