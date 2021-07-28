@@ -9,6 +9,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Orion.Core\Orion.Core.csproj" />
       <ProjectReference Include="..\Orion.DataContracts\Orion.DataContracts.csproj" />
     </ItemGroup>
 

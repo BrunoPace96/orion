@@ -1,11 +1,11 @@
 using System.Threading.Tasks;
+using Orion.Core.Domain.Contracts;
 
 namespace Orion.Repository.Repository
 {
-    public interface IRepository<TEntity>: IReadOnlyRepository<TEntity>
+    public interface IRepository<TEntity> where TEntity: IAggregateRoot
     {
-        Task InsertAsync(TEntity entity);
-        void Update(TEntity entity);
+        Task SaveAsync(TEntity entity);
         void Delete(TEntity entity);
     }
 }

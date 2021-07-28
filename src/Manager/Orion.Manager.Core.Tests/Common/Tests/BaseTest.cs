@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Orion.Core.Domain;
-using Orion.Core.Services;
+using Orion.Core.Domain.Contracts;
 using Orion.DomainValidation.Domain;
 using Orion.Manager.Core.Tests.Common.Fixtures;
 using Orion.Repository.Repository;
@@ -13,21 +13,20 @@ using Xunit;
 namespace Orion.Manager.Core.Tests.Common.Tests
 {
     public class BaseTest<TEntity>: IClassFixture<ApplicationFixture> 
-        where TEntity : EntityBase
+        where TEntity : EntityBase, IAggregateRoot
     {
         protected readonly IMediator Mediator;
         protected readonly IDomainValidationProvider Validator;
-        protected readonly IRepository<TEntity> Repository;
-        
-        private readonly IWriteService<TEntity> _service;
+        private readonly IRepository<TEntity> _repository;
+        protected readonly IReadOnlyRepository<TEntity> ReadOnlyRepository;
         private readonly IUnitOfWorkScopeFactory _unitOfWork;
         
         protected BaseTest(ApplicationFixture fixture)
         {
             Mediator = fixture.ServiceProvider.GetService<IMediator>();
             Validator = fixture.ServiceProvider.GetService<IDomainValidationProvider>();
-            Repository = fixture.ServiceProvider.GetService<IRepository<TEntity>>();
-            _service = fixture.ServiceProvider.GetService<IWriteService<TEntity>>();
+            _repository = fixture.ServiceProvider.GetService<IRepository<TEntity>>();
+            ReadOnlyRepository = fixture.ServiceProvider.GetService<IReadOnlyRepository<TEntity>>();
             _unitOfWork = fixture.ServiceProvider.GetService<IUnitOfWorkScopeFactory>();
         }
 
@@ -36,10 +35,10 @@ namespace Orion.Manager.Core.Tests.Common.Tests
             Validator.GetErrors().Clear();
             
             var unitOfWork = _unitOfWork.Get();
-            await _service.SaveAsync(entity);
+            await _repository.SaveAsync(entity);
             await unitOfWork.CommitAsync();
             
-            entity = await Repository.ReloadAsync(entity);
+            entity = await ReadOnlyRepository.ReloadAsync(entity);
             return entity.Id;
         }
     }

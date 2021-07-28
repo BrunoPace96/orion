@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using Orion.Core.Services;
+using Orion.Repository.Repository;
 using Orion.Repository.UnitOfWork.Factories;
 
 namespace Orion.Manager.Core.Users.Write.CreateUser
@@ -12,17 +12,17 @@ namespace Orion.Manager.Core.Users.Write.CreateUser
     {
         private readonly IMapper _mapper;
         private readonly IUnitOfWorkScopeFactory _unitOfWork;
-        private readonly IWriteService<User> _service;
+        private readonly IRepository<User> _repository;
 
         public CreateUserHandler(
             IMapper mapper,
             IUnitOfWorkScopeFactory unitOfWork,
-            IWriteService<User> service
+            IRepository<User> repository
         )
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
-            _service = service;
+            _repository = repository;
         }
         
         public async Task<CreateUserResult> Handle(
@@ -38,7 +38,7 @@ namespace Orion.Manager.Core.Users.Write.CreateUser
             );
             
             var unitOfWork = _unitOfWork.Get();
-            await _service.SaveAsync(entity);
+            await _repository.SaveAsync(entity);
             await unitOfWork.CommitAsync();
 
             return _mapper.Map<CreateUserResult>(entity.Value);

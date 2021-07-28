@@ -1,7 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Orion.Core.DI;
 using Orion.DomainValidation.DI;
-using Orion.Manager.Core.Common.Services;
 using Orion.Manager.Infra.Data.Repositories;
 using Orion.Manager.Infra.Data.UnitOfWork;
 using Orion.Manager.Infra.IoC.Setup;
@@ -20,7 +18,6 @@ namespace Orion.Manager.Infra.IoC
         {
             services
                 .AddRepositories(typeof(ReadOnlyRepository<>), typeof(Repository<>), typeof(UnitOfWorkScopeFactory))
-                .AddService(typeof(WriteService<>))
                 .AddDomainValidation()
                 .AddHttpClients()
                 .AddMapper()

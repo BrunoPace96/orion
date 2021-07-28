@@ -28,7 +28,7 @@ namespace Orion.Manager.Core.Tests.Tests.UseCases.Users.Write.CreateUser
         public async Task Ok()
         {
             var result = await Mediator.Send(_command);
-            var exists = await Repository.CheckIfExistsAsync(result.Id);
+            var exists = await ReadOnlyRepository.CheckIfExistsAsync(result.Id);
             Assert.NotNull(result);
             Assert.True(exists);
         }
