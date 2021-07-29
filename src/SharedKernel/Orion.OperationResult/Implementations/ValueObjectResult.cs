@@ -22,5 +22,8 @@ namespace Orion.OperationResult.Implementations
 
         public static implicit operator ValueObjectResult<TResult>(TResult value) =>
             Ok(value);
+        
+        public static implicit operator TResult(ValueObjectResult<TResult> result) =>
+            result.Value;
     }
 }

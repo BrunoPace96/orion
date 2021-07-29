@@ -1,6 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
-using Orion.Manager.Core.Users;
-using Orion.Manager.Core.Users.Write;
+using Orion.Manager.Core.Students;
 
 namespace Orion.Manager.Infra.IoC.Setup
 {
@@ -8,7 +7,7 @@ namespace Orion.Manager.Infra.IoC.Setup
     {
         public static IServiceCollection AddMapper(this IServiceCollection services)
         {
-            services.AddAutoMapper(typeof(UserMap).Assembly);
+            services.AddAutoMapper(typeof(StudentMap).Assembly);
             return services;
         }
     }

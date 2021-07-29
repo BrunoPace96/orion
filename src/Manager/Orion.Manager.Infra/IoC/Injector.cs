@@ -22,7 +22,6 @@ namespace Orion.Manager.Infra.IoC
                 .AddHttpClients()
                 .AddMapper()
                 .AddMediator()
-                .AddValidation()
                 .AddSingleton(appSettings)
                 .AddProviders();
 

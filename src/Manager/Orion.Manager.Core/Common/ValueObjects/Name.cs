@@ -39,9 +39,6 @@ namespace Orion.Manager.Core.Common.ValueObjects
             yield return Value;
         }
         
-        public static implicit operator Name(string value) => 
-            Create(value).Value;
-        
         public static implicit operator string(Name name) => 
             name.Value;
         

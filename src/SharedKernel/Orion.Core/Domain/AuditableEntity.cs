@@ -14,8 +14,11 @@ namespace Orion.Core.Domain
         [Required]
         public DateTime LastUpdatedAt { get; private set; }
 
-        public virtual void Created() =>
+        public virtual void Created()
+        {
+            Id = new Guid();
             CreatedAt = LastUpdatedAt = DateTime.UtcNow;
+        }
 
         public virtual void Updated() =>
             LastUpdatedAt = DateTime.UtcNow;

@@ -5,8 +5,8 @@ namespace Orion.Core.Domain
 {
     public abstract partial class EntityBase: IEntityBase
     {
-        public Guid Id { get; }
-        
+        public Guid Id { get; private set; }
+
         public override bool Equals(object obj)
         {
             if (obj is not EntityBase item) 

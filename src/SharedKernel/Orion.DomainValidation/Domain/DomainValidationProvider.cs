@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using Orion.DomainValidation.DataContracts;
+using Orion.OperationResult.Implementations;
 
 namespace Orion.DomainValidation.Domain
 {
@@ -34,5 +35,15 @@ namespace Orion.DomainValidation.Domain
         
         public void AddNotFoundError(string message = "Not Found!") => 
             AddValidationError(new DomainValidationNotification(HttpStatusCode.NotFound, message));
+        
+        public void ValidateValueObjects(params ValueObjectResult<object>[] items)
+        {
+            var errors = items.Where(e => e.Failure)
+                .SelectMany(e => e.Errors.Select(error => new DomainValidationNotification(error, nameof(e))))
+                .ToList();
+            
+            if (errors.Any())
+                AddValidationErrors(errors);
+        }
     }
 }

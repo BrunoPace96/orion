@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Orion.DomainValidation.DataContracts;
+using Orion.OperationResult.Implementations;
 
 namespace Orion.DomainValidation.Domain
 {
@@ -14,5 +15,6 @@ namespace Orion.DomainValidation.Domain
         void AddUnauthorizedError(string message = "Unauthorized!");
         void AddForbiddenError(string message = "Forbidden!");
         void AddNotFoundError(string message = "Not Found!");
+        void ValidateValueObjects(params ValueObjectResult<object>[] items);
     }
 }
