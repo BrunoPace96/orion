@@ -10,7 +10,7 @@ namespace Orion.Manager.Infra.IoC.Setup
         public static IServiceCollection AddMediator(this IServiceCollection services)
         {
             services.AddMediatR(typeof(CreateStudentHandler).Assembly);
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FailFastBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
             return services;
         }
     }
