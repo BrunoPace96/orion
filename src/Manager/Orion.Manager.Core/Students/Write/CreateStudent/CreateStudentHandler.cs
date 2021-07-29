@@ -44,13 +44,14 @@ namespace Orion.Manager.Core.Students.Write.CreateStudent
             if (_validator.HasErrors())
                 return null;
             
-            var entity = Student.Create(name, cpf, email, phone);
+            var personalInfo = PersonalInfo.Create(name, cpf, email, phone);
+            var student = Student.Create(personalInfo);
             
             var unitOfWork = _unitOfWork.Get();
-            await _repository.SaveAsync(entity);
+            await _repository.SaveAsync(student);
             await unitOfWork.CommitAsync();
 
-            return _mapper.Map<CreateStudentResult>(entity.Value);
+            return _mapper.Map<CreateStudentResult>(student);
         }
     }
 }

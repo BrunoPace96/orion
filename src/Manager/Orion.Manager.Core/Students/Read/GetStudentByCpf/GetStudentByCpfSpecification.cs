@@ -6,7 +6,9 @@ namespace Orion.Manager.Core.Students.Read.GetStudentByCpf
     {
         public GetStudentByCpfSpecification(string cpf)
         {
-            Query.Where(e => e.Cpf.Value == cpf);
+            Query
+                .Include(e => e.PersonalInfo)
+                .Where(e => e.PersonalInfo.Cpf.Value == cpf);
         }
     }
 }

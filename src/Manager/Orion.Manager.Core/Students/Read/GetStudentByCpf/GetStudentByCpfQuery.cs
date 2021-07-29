@@ -2,5 +2,6 @@
 
 namespace Orion.Manager.Core.Students.Read.GetStudentByCpf
 {
-    public record GetStudentByCpfQuery(string Cpf): IRequest<GetStudentByCpfResult>;
+    public record GetStudentByCpfQuery(string Cpf): 
+        IRequest<GetStudentByCpfResult>;
 }

@@ -1,32 +1,25 @@
-﻿using Orion.Core.Domain;
+﻿using System;
+using Orion.Core.Domain;
 using Orion.Core.Domain.Contracts;
 using Orion.Manager.Core.Common.ValueObjects;
-using Orion.OperationResult.Implementations;
 
 namespace Orion.Manager.Core.Students
 {
     public class Student: EntityBase, IAggregateRoot
     {
-        public Name Name { get; }
-        public Cpf Cpf { get; }
-        public Email Email { get; }
-        public Phone Phone { get; }
+        public Guid PersonalInfoId { get; set; }
+        public PersonalInfo PersonalInfo { get; }
+        public RegistrationNumber RegistrationNumber { get; }
 
         private Student() {}
 
-        private Student(Name name, Cpf cpf, Email email, Phone phone)
+        private Student(PersonalInfo personalInfo)
         {
-            Name = name;
-            Cpf = cpf;
-            Email = email;
-            Phone = phone;
+            PersonalInfo = personalInfo;
+            RegistrationNumber = new RegistrationNumber();
         }
 
-        public static EntityResult<Student> Create(
-            Name name,
-            Cpf cpf,
-            Email email,
-            Phone phone
-        ) => new Student(name, cpf, email, phone);
+        public static Student Create(PersonalInfo personalInfo) => 
+            new(personalInfo);
     }
 }

@@ -10,8 +10,8 @@ using Orion.Manager.Infra.Data.Context;
 namespace Orion.Manager.Infra.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210729021144_Student")]
-    partial class Student
+    [Migration("20210729043255_FirstCommit")]
+    partial class FirstCommit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace Orion.Manager.Infra.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Orion.Manager.Core.Students.Student", b =>
+            modelBuilder.Entity("Orion.Manager.Core.Students.PersonalInfo", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -41,14 +41,43 @@ namespace Orion.Manager.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Student");
+                    b.ToTable("PersonalInfo");
                 });
 
             modelBuilder.Entity("Orion.Manager.Core.Students.Student", b =>
                 {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("PersonalInfoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PersonalInfoId")
+                        .IsUnique();
+
+                    b.ToTable("Student");
+                });
+
+            modelBuilder.Entity("Orion.Manager.Core.Students.PersonalInfo", b =>
+                {
                     b.OwnsOne("Orion.Manager.Core.Common.ValueObjects.Cpf", "Cpf", b1 =>
                         {
-                            b1.Property<Guid>("StudentId")
+                            b1.Property<Guid>("PersonalInfoId")
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<string>("Value")
@@ -56,17 +85,17 @@ namespace Orion.Manager.Infra.Data.Migrations
                                 .HasColumnType("nvarchar(max)")
                                 .HasColumnName("Cpf");
 
-                            b1.HasKey("StudentId");
+                            b1.HasKey("PersonalInfoId");
 
-                            b1.ToTable("Student");
+                            b1.ToTable("PersonalInfo");
 
                             b1.WithOwner()
-                                .HasForeignKey("StudentId");
+                                .HasForeignKey("PersonalInfoId");
                         });
 
                     b.OwnsOne("Orion.Manager.Core.Common.ValueObjects.Email", "Email", b1 =>
                         {
-                            b1.Property<Guid>("StudentId")
+                            b1.Property<Guid>("PersonalInfoId")
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<string>("Value")
@@ -74,17 +103,17 @@ namespace Orion.Manager.Infra.Data.Migrations
                                 .HasColumnType("nvarchar(max)")
                                 .HasColumnName("Email");
 
-                            b1.HasKey("StudentId");
+                            b1.HasKey("PersonalInfoId");
 
-                            b1.ToTable("Student");
+                            b1.ToTable("PersonalInfo");
 
                             b1.WithOwner()
-                                .HasForeignKey("StudentId");
+                                .HasForeignKey("PersonalInfoId");
                         });
 
                     b.OwnsOne("Orion.Manager.Core.Common.ValueObjects.Name", "Name", b1 =>
                         {
-                            b1.Property<Guid>("StudentId")
+                            b1.Property<Guid>("PersonalInfoId")
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<string>("Value")
@@ -92,17 +121,17 @@ namespace Orion.Manager.Infra.Data.Migrations
                                 .HasColumnType("nvarchar(max)")
                                 .HasColumnName("Name");
 
-                            b1.HasKey("StudentId");
+                            b1.HasKey("PersonalInfoId");
 
-                            b1.ToTable("Student");
+                            b1.ToTable("PersonalInfo");
 
                             b1.WithOwner()
-                                .HasForeignKey("StudentId");
+                                .HasForeignKey("PersonalInfoId");
                         });
 
                     b.OwnsOne("Orion.Manager.Core.Common.ValueObjects.Phone", "Phone", b1 =>
                         {
-                            b1.Property<Guid>("StudentId")
+                            b1.Property<Guid>("PersonalInfoId")
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<string>("Value")
@@ -110,12 +139,12 @@ namespace Orion.Manager.Infra.Data.Migrations
                                 .HasColumnType("nvarchar(max)")
                                 .HasColumnName("Phone");
 
-                            b1.HasKey("StudentId");
+                            b1.HasKey("PersonalInfoId");
 
-                            b1.ToTable("Student");
+                            b1.ToTable("PersonalInfo");
 
                             b1.WithOwner()
-                                .HasForeignKey("StudentId");
+                                .HasForeignKey("PersonalInfoId");
                         });
 
                     b.Navigation("Cpf")
@@ -128,6 +157,38 @@ namespace Orion.Manager.Infra.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Phone")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Orion.Manager.Core.Students.Student", b =>
+                {
+                    b.HasOne("Orion.Manager.Core.Students.PersonalInfo", "PersonalInfo")
+                        .WithOne()
+                        .HasForeignKey("Orion.Manager.Core.Students.Student", "PersonalInfoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsOne("Orion.Manager.Core.Common.ValueObjects.RegistrationNumber", "RegistrationNumber", b1 =>
+                        {
+                            b1.Property<Guid>("StudentId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)")
+                                .HasColumnName("RegistrationNumber");
+
+                            b1.HasKey("StudentId");
+
+                            b1.ToTable("Student");
+
+                            b1.WithOwner()
+                                .HasForeignKey("StudentId");
+                        });
+
+                    b.Navigation("PersonalInfo");
+
+                    b.Navigation("RegistrationNumber")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

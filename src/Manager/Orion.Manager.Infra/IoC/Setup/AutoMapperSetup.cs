@@ -1,5 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
-using Orion.Manager.Core.Students;
+using Orion.Manager.Core.Students.Read;
 
 namespace Orion.Manager.Infra.IoC.Setup
 {

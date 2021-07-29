@@ -31,7 +31,8 @@ namespace Orion.Manager.Core.Students.Read.GetStudentById
             CancellationToken cancellationToken
         )
         {
-            var student = await _repository.FirstOrDefaultAsync(query.Id);
+            var specification = new GetStudentByIdSpecification(query.Id);
+            var student = await _repository.FirstOrDefaultAsync(specification);
 
             if (student == null)
             {

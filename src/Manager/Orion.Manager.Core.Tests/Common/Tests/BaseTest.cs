@@ -9,6 +9,7 @@ using Orion.Manager.Core.Tests.Common.Fixtures;
 using Orion.Repository.Repository;
 using Orion.Repository.UnitOfWork.Factories;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Orion.Manager.Core.Tests.Common.Tests
 {
@@ -30,7 +31,7 @@ namespace Orion.Manager.Core.Tests.Common.Tests
             _unitOfWork = fixture.ServiceProvider.GetService<IUnitOfWorkScopeFactory>();
         }
 
-        protected async Task<Guid> GenerateAndAsync(TEntity entity)
+        protected async Task<Guid> SaveEntityAsync(TEntity entity)
         {
             Validator.GetErrors().Clear();
             
