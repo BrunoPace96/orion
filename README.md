@@ -86,4 +86,4 @@ There is some packages at SharedKernel to provide common solutions that can be p
 7. **Authentication**/**Authorization** Service
 8. Use more design patterns like **Rules Builder**, **Decorator** and more
 9. Add an app implemented using **Vertical Slices Architecture** to the environment
-10. K6 from Load/Stress Tests
+10. K6 to Load/Stress Tests
