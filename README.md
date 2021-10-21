@@ -60,7 +60,7 @@ There is some packages at SharedKernel to provide common solutions that can be p
 - _Repository_ - To implement **Specification**, **Unit of Work** and other repositories concepts
 - _Resilience_ - To HTTP calls and other resources that may need **Retrying**, **Circuit Breaker** and **Timeout** policies
 
-## 8. Used Patterns and Principles
+## 7. Used Patterns and Principles
 - [Clean Architecture](https://blog.cleancoder.com/)
 - [CQRS/CQRS](https://martinfowler.com/bliki/CQRS.html)
 - [SOLID](https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html)
