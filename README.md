@@ -40,7 +40,14 @@ This are common resources that needs to be used between application layers, like
 ## 4. Serverless
 The **Messenger** app was created to be an **Microservice** to send SMS, E-mail, and Push Notifications. The project is an **Azure Function**, triggered by an **RabbitMQ** queue/topic or a **gRPC** call.
 
-## 5. Packages
+## 5. Tests 
+The Manager tests are focused on Domain. There are **Unit Tests** on **Entities** and **Value Objects** and **Integration Tests** on **Use Cases**. Note that are no network calls need on this tests, they are integration based on concept there they are testing the Use Case. 
+
+The folder structure are similar to the structured used on Core.
+
+![alt text](src/Images/TestFolderStructure.png "Tests Structure")
+
+## 6. Packages
 There is some packages at SharedKernel to provide common solutions that can be packaged using nuget and installed at projects.
 
 - Asp.net - For **Endpoints** pattern implementation
