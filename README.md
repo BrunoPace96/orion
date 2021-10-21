@@ -75,3 +75,15 @@ There is some packages at SharedKernel to provide common solutions that can be p
 - [Mediator](https://refactoring.guru/design-patterns/mediator)
 - [Repository Pattern](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design)
 - [AAA Test Pattern](https://medium.com/@pjbgf/title-testing-code-ocd-and-the-aaa-pattern-df453975ab80)
+
+## 8. Next Steps
+1. Containerization with **Docker**, **Docker Compose** and **Kubernetes**
+2. More **Microservices** to integrations exploration
+3. **Open Tracing** with **Jaeger**
+4. **GraphQL** service example
+5. **CI/CD** pipeline with **Github Actions**
+6. **API Management Gateway** with **Kong**
+7. **Authentication**/**Authorization** Service
+8. Use more design patterns like **Rules Builder**, **Decorator** and more
+9. Add an app implemented using **Vertical Slices Architecture** to the environment
+10. K6 from Load/Stress Tests
