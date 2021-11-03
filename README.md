@@ -1,5 +1,12 @@
 # Orion
 
+## How to Run
+The solution is not already containerized, so there are some dependencies to be configured to run the application. Configure a SQL Server Database, Configure a RabbitMQ as Broker, and install Azure Functions Core Tools to run the serverless. But, if you want to validate the solution, the "Manager" tests are all passing with an in-memory database and no extra dependencies.  
+
+## Introduction
+
+A sandbox where I experiment with new techniques, concepts, and technologies. Here you will find some DDD, CQRS, Clean Architecture, Event-Driven Architecture, Serverless, Microservices, RabbitMQ, gRPC, SOLID, Design Patterns, and more.
+
 ## 1. Architecture
 
 For the **Manager** app architecture I'm using a **Clean Architecture** model, splitting the solution into: **Core**, **Infra**, **Service (Ports)** and **Shared Kernel** layers.
