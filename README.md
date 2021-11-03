@@ -1,7 +1,7 @@
 # Orion
 
 ## How to Run
-The solution is not already containerized, so there are some dependencies to be configured to run the application. Configure a SQL Server Database, Configure a RabbitMQ as Broker, and install Azure Functions Core Tools to run the serverless. But, if you want to validate the solution, the "Manager" tests are all passing with an in-memory database and no extra dependencies.  
+The solution is not already containerized so there are some dependencies you must configure to run the application. Configure a SQL Server Database, configure a RabbitMQ as broker, and install Azure Functions Core Tools to run the serverless. But, if you want to validate the solution, the "Manager" tests are all passing with an in-memory database and no extra dependencies.  
 
 ## Introduction
 
